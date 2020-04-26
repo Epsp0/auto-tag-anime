@@ -21,3 +21,5 @@ containing the model in the auto-tag-anime folder
 
 ## Notes
 * windows version only works with jpegs
+* See a list of tags the model will predict in 'tags.txt' inside of the deepdanbooru-v3 folder
+* checks for images in subdirectories 
