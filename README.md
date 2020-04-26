@@ -15,7 +15,9 @@ containing the model in the auto-tag-anime folder
 
 ## How to use
 `python3 auto-tag-anime "example.jpg"`
+
 `python3 auto-tag-anime "/path/to/directory/"`
+
 
 ## Notes
 * windows version only works with jpegs
