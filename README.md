@@ -9,14 +9,16 @@ containing the model in the auto-tag-anime folder
 
 2. `python3 -m venv ./env`
 
-3. `source env/bin/activate`
+3. On osx: `source env/bin/activate`
+
+   On Windows: `./env/Scripts/activate`
 
 2. `python setup.py install`
 
 ## How to use
-`python3 auto-tag-anime "example.jpg"`
+`python3 auto-tag-anime.py "example.jpg"`
 
-`python3 auto-tag-anime "/path/to/directory/"`
+`python3 auto-tag-anime.py "/path/to/directory/"`
 
 
 ## Notes

@@ -2,8 +2,23 @@ import sys
 if sys.platform == 'win32':
     import os
     import iptcinfo3
+    patched = False
 else:
     import xattr
+
+def patch_IPTCInfo(*args, **kwargs):
+    import os, sys
+
+    class HiddenPrints:
+        def __enter__(self):
+            self._original_stdout = sys.stdout
+            sys.stdout = open('/dev/null', 'w')
+
+        def __exit__(self, exc_type, exc_val, exc_tb):
+            sys.stdout = self._original_stdout
+
+    with HiddenPrints():
+        return origianl_IPTCInfo(*args, **kwargs)
 
 def osx_writexattrs(F,TagList):
 
@@ -26,10 +41,14 @@ def osx_writexattrs(F,TagList):
             # Equivalent shell command is xattr -w com.apple.metadata:kMDItemFinderComment [PLIST value] [File name]
 
 def win_addInfo(F,TagList):
+    if not patched:
+        origianl_IPTCInfo = iptcinfo3.IPTCInfo
+        iptcinfo3.IPTCInfo = patch_IPTCInfo
+
     try:
         info = iptcinfo3.IPTCInfo(F)
         info['keywords'] = TagList
         info.save()
         os.remove(F + '~')
     except:
-        print("failed to edit exif data")
+        return
