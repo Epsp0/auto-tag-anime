@@ -7,6 +7,6 @@ setup(
    author='epsp',
    url='https://github.com/Epsp0/auto-tag-anime',
    description='adds tags to anime images predicted by DeepDanbooru tensorflow model',
-   install_requires=['tensorflow==2.0', 'numpy', 'pillow', 'iptcinfo3; platform_system == "Windows"', 
+   install_requires=['tensorflow==2.6.4', 'numpy', 'pillow', 'iptcinfo3; platform_system == "Windows"', 
    'xattr; platform_system != "Windows"'],
 ) 
